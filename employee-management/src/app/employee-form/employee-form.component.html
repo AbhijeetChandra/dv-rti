@@ -1,0 +1,54 @@
+<div class="emp-form-container">
+  <div class="comp-title">{{mode() | titlecase}} Employee Details</div>
+
+  <form>
+    <div>
+      <mat-form-field >
+        <mat-label>Employee Name</mat-label>
+        <mat-icon matPrefix class="my-icon">person_outline</mat-icon>
+        <input matInput name="empname" [(ngModel)]="empData().name" [ngClass] = "{'invalid' : !validators().isInputValid}">
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field>
+        <mat-label>Select role</mat-label>
+        <mat-icon matPrefix class="my-icon">work_outline</mat-icon>
+        <mat-select name="selectedVal" [(ngModel)]="empData().role"  [ngClass] = "{'invalid' : !validators().isDropdownValid}">
+          @for(role of roles(); track $index) {
+            <mat-option [value]="role">{{role}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="date-pickers-container" >
+      <div class="custom-picker"  (click)="openDialog('startDate')" [ngClass] = "{'invalid' : !validators().isStartDateValid}">
+        <mat-icon>event</mat-icon>
+        <span>{{empData().startDateTextLocal || 'No Date'}}</span>
+      </div>
+      <div class="arrow">
+        <mat-icon>arrow_forward</mat-icon>
+      </div>
+      <div class="custom-picker" (click)="openDialog('endDate')">
+        <mat-icon>event</mat-icon>
+        <span>{{empData().endDateTextLocal || 'No Date'}}</span>
+      </div>
+    </div>
+    @if(!validators().isDateRangeValid) {
+      <div class="msg">*End date can't be before start date</div>
+    }
+
+    
+  </form>
+
+  <!-- <pre>
+    {{ empData() | json}}
+  </pre> -->
+  <div class="footer">
+    <div class="action-buttons">
+      <button class="cancel" (click)="onAction('cancel')">Cancel</button>
+      <button class="save" (click)="onAction('save')">Save</button>
+    </div>
+  </div>
+  
+</div>

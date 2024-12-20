@@ -1,0 +1,64 @@
+<div class="emp-list-container">
+    <div class="comp-title">Employee List</div>
+
+    @if(employeeList().length) {
+        <div class="employees-sections">
+            <section class="employees">
+                <div class="section-title">Current employees</div>
+                <ul class="emp-list">
+                    @for(emp of currentEmployees(); track $index){
+                        <li class="emp-item">
+                            <div class="fields-wrapper" (click)="openForm({action :'edit', id : emp.id})">
+                                <div class="emp-name">{{ emp.name }}</div>
+                                <div class="emp-role">{{ emp.role  }}</div>
+                                <div class="emp-duration">{{ emp.duration }}</div>
+                            </div>
+                            <div class="more-actions">
+                                <mat-icon (click)="deleteEmp(emp.id)">delete_outline</mat-icon>
+                            </div>
+                        </li>
+                    }
+                </ul>
+               
+            </section>
+            <section class="employees">
+                <div class="section-title">Previous employees</div>
+                <ul class="emp-list">
+                    @for(emp of previousEmployees(); track $index){
+                        <li class="emp-item" >
+                            <div class="fields-wrapper" (click)="openForm({action :'edit', id : emp.id})">
+                                <div class="emp-name">{{ emp.name }}</div>
+                                <div class="emp-role">{{ emp.role  }}</div>
+                                <div class="emp-duration">{{ emp.duration }}</div>
+                            </div>
+                            <div class="more-actions">
+                                <mat-icon (click)="deleteEmp(emp.id)">delete_outline</mat-icon>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </section>
+        </div>
+    }
+    @else {
+        <div class="svg-container">
+            <img src="../images/noEmp.svg">
+        </div>
+    }
+
+    <footer>
+      
+        <div class="hint" [ngClass]="{'no-emp' : !employeeList().length }">  
+             @if(false) { <!-- //employeeList().length -->
+                <span>
+                    Swipe left to delete
+                </span>
+            }
+        </div>
+        
+        <button class="add-emp" (click)="openForm({action:'add'})" >+</button>
+    </footer>
+   
+
+   
+</div>

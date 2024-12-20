@@ -1,0 +1,2 @@
+export const monthsShort = ['Jan', 'Feb', 'Mar', 'Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+export const employeeRoles =  ["Product Designer","Flutter Developer", "QA Tester", "Full-stack Developer",  "Senior Software Developer"];
