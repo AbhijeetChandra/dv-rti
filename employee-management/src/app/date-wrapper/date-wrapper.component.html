@@ -1,0 +1,59 @@
+<div class="date-wrapper-container" >
+    <section class="date-shortcuts">
+        <div class="buttons-container">
+            @for(btn of dateBtnsViewsComputed(); track $index) {
+                <button (click)="selectDateShortcut($index, btn.name)" [ngClass]="{'selected' : btn.selected}">{{ btn.name }}</button>
+            }
+        </div>
+    
+    </section>
+
+    <section class="calendar">
+        <mat-calendar #calendar 
+            [(selected)]="selectedDate" 
+            [startAt]="selectedDate()" 
+            touchUi
+            >
+        </mat-calendar>
+
+
+      
+
+    </section>
+
+    <section class="footer">
+        <div class="date-text">
+            <mat-icon>event</mat-icon>
+            <span>{{dateTextLocal()}}</span>
+        </div>
+        <div class="action-buttons">
+            <button class="cancel" (click)="onDialogAction('cancel')">Cancel</button>
+            <button class="save" (click)="onDialogAction('save')">Save</button>
+        </div>
+    </section>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <p>date-wrapper works! {{data['dateUTC']}}</p>
+ -->
+
+
+<!-- <mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Install</button>
+</mat-dialog-actions> -->

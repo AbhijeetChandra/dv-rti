@@ -1,0 +1,93 @@
+.emp-form-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    form {
+        padding: 1rem;
+        flex-grow: 1;
+        mat-form-field,input, select {
+            width: 100%;
+        }
+        mat-icon {
+            color: #1DA1F2;
+        }
+       
+
+        .date-pickers-container {
+            height: 3.5rem;
+            display: flex;
+            justify-content: space-between;
+            div {
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                height: 100%;
+        
+                mat-icon {
+                    color: #1DA1F2;
+                    margin: 0px 10px;
+                }
+
+                &.custom-picker {
+                    flex-grow: 1;
+                    border: 1px solid #e5e5e5;
+                    border-radius: 5px;
+                    font-size: 90%;
+                    &:hover {
+                        background-color: #e9e9e9;
+                    }
+                }
+            }
+           
+        }
+        div.msg {
+            margin-top: 5px;
+            padding: 3px;
+            font-size: small;
+            color: #ca6666;
+        }
+        .invalid {
+            border-bottom : 3px solid rgb(232, 177, 177) !important;
+            
+        }
+
+    }
+}
+
+.comp-title {
+    font-weight: 500;
+    font-size: 1.1rem;
+    padding: 1rem;
+    background-color: #1DA1F2; //Todo : Use variables
+    color: #fafafa;    //Todo : Use variables
+    box-sizing: content-box;
+}
+
+
+div.footer {
+    flex-basis: 2rem;
+    padding: 1rem;
+    border-top: 1px solid #e5e5e5;
+    
+    .action-buttons {
+        display: flex;
+        justify-content: flex-end;
+    }
+    button {
+        border: none;
+        border-radius: 5px;
+        padding: 0.8rem;
+        font-size: 90%;
+        margin-left: 10px;
+        background-color: #EDF8FF;
+        color: #1DA1F2;
+        cursor: pointer;
+        &:hover {
+           background-color: #1DA1F2;
+           color: #fafafa;
+        }
+      
+    }
+}
+
+

@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+@import '../node_modules/@angular/material/prebuilt-themes/azure-blue.css';
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-calendar-body-selected {
+    background-color:  #1DA1F2 !important; //Todo : Replace with proper material theme
+}
+
+.mdc-text-field--filled {
+    background-color: #ffffff !important;
+    border: 1px solid #e5e5e5;
+}
+
+.mat-mdc-select-panel {
+    background-color: white !important;
+}
+
+.mat-mdc-option.mdc-list-item--selected {
+    background-color: #f9f9f9 !important;
+}
+.mat-mdc-select-arrow {
+    color: #1DA1F2 !important;
+}

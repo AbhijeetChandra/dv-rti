@@ -1,0 +1,121 @@
+.emp-list-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .comp-title {
+        font-weight: 500;
+        font-size: 1.1rem;
+        padding: 1rem;
+        background-color: #1DA1F2; //Todo : Use variables
+        color: #fafafa;    //Todo : Use variables
+        box-sizing: content-box;
+    }
+       
+    div.employees-sections {
+        flex-grow: 1;
+        section.employees {
+            height: 50%;
+            .section-title {
+                padding: 1rem;
+                background-color: #f2f2f2;
+                font-weight: 500;
+                color: #1DA1F2 ;
+            }
+            
+            ul.emp-list {
+                padding: 0;
+                margin: 0;
+                height: 80%;
+                overflow-y: auto;
+                li {
+                    display: flex;
+                    list-style-type: none;
+                    padding: 0.5rem 1rem;
+                    border-bottom: 1px solid #e5e5e5;
+                    cursor: pointer;
+                    &:hover {
+                        background-color: #f9f9f9; //Todo : Link to Tertiary color
+                    }
+                    .fields-wrapper {
+                        flex-grow: 1;
+                        .emp-name {
+                            font-weight: 500;
+                            padding: 0.1rem 0;
+                        }
+                        .emp-role, .emp-duration {
+                            color: grey;
+                            padding: 0.1rem 0;
+                        }
+                        .emp-role{
+                            font-size: 0.9rem;
+                        }
+                        .emp-duration {
+                            font-size: 0.8rem;
+                        }
+                    }
+                    .more-actions {
+                        display: flex;
+                        align-items: center;
+                        border-left: 1px solid #d4d4d4;
+                        padding-left: 1rem;
+                        mat-icon {
+                            padding: 5px;
+                           color :  rgb(182, 182, 182);
+                           &:hover  {
+                            color :  rgb(136, 136, 136);
+                           }
+                        }
+                    }
+                 
+                }
+            }
+        }
+       
+    }
+    div.svg-container {
+        height: 90%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    footer {
+        flex-basis: 3rem;
+        padding: 1rem 0;
+        border-top: 1px solid #e5e5e5;
+        display: flex;
+        align-items: center;
+        .hint {
+            flex-grow: 1;
+            // background-color: #f2f2f2;
+            color: grey;
+            &.no-emp {
+                background-color: white;
+            }
+            span {
+                display: inline-block;
+                margin-top: 10px;
+                margin-left: 10px;
+            }
+        }
+
+        button.add-emp {
+            background-color: #1DA1F2;
+            color: #e5e5e5;
+            font-size: 2.2rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 7px;
+            height: 3.1rem;
+            width: 3.1rem;
+            margin-right: 10px;
+        }
+    }   
+}
+
+
+
+
+
+
+
