@@ -19,7 +19,6 @@ export class EmployeeListComponent implements OnInit{
   employeeList = signal<Employee[]>([]);
 
   currentEmployees = computed(() => {
-    console.log("EMployee list updated!!");
     return this.employeeList()
           .filter(emp => !emp.endDateUTC)
           .map(item =>{
@@ -29,7 +28,6 @@ export class EmployeeListComponent implements OnInit{
   });
 
   previousEmployees =  computed(() => {
-    console.log("EMployee list updated!!");
     return this.employeeList()
           .filter(emp => emp.endDateUTC)
           .map(item =>{ 
@@ -42,17 +40,23 @@ export class EmployeeListComponent implements OnInit{
 
   }
   ngOnInit() {
-    let employees =  structuredClone(this.storageAPIService.getEmployees());
+    let employees =  structuredClone(this.storageAPIService.getCachedEmployees());
     this.employeeList.update(list => employees);
+    this.storageAPIService.getEmployees().subscribe( (res:any) => {
+       let employees =  structuredClone(res['data']);
+       this.employeeList.update(list => employees);
+    });
   }
 
   deleteEmp(id : string) {
-    this.storageAPIService.deleteEmployee(id); //Todo subscribe;
-    this.employeeList.update(list => {
-      let index = list.findIndex(empl => empl.id === id);
-      if(index !== -1) list.splice( index, 1);
-      return [...list];
-    });
+    this.storageAPIService.deleteEmployee(id).subscribe( res => {
+      this.employeeList.update(list => {
+        let index = list.findIndex(empl => empl.id === id);
+        if(index !== -1) list.splice( index, 1);
+        return [...list];
+      });
+    }); 
+ 
   }
 
   openForm(evt:any) {

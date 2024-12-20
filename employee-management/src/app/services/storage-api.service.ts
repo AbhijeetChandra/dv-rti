@@ -9,11 +9,11 @@ export class StorageAPIService {
 
   constructor(private storeService : StoreService) { }
 
-  getEmployees() : Employee[] {
+  getEmployees() {
     return this.storeService.getAllEmployees();
   }
 
-  getEmployeeById(id:string):Employee {
+  getEmployeeById(id:string) {
     return this.storeService.getEmployeeById(id);
   }
 
@@ -22,11 +22,14 @@ export class StorageAPIService {
   }
 
   deleteEmployee(id: string) {
-    this.storeService.deleteEmployee(id);
+    return this.storeService.deleteEmployee(id);
   }
 
   getRoles() {
     return this.storeService.getAllRoles();
+  }
+  getCachedEmployees() {
+    return this.storeService.allEmployees;
   }
 
 }

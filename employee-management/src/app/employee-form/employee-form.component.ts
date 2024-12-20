@@ -75,10 +75,11 @@ export class EmployeeFormComponent implements OnInit{
       else {
         this.formMode = 'edit'
         this.route.queryParams.subscribe(qParams => {
-          let data = this.storageAPIService.getEmployeeById(qParams['id']); //Todo : Subscribe 
-          if(data) {
-            this.empData.set(data);
-          }
+          this.storageAPIService.getEmployeeById(qParams['id']).subscribe((res:any) => {
+            if(res.data) {
+              this.empData.set(res.data);
+            }
+          });
         })
       }
     });
@@ -103,7 +104,6 @@ export class EmployeeFormComponent implements OnInit{
 
     this.dialogRef.afterClosed().subscribe((result: any) => {
       result = JSON.parse(result);
-      console.log(`Dialog result: `,result);
       if(result.action === 'cancel') return;
       this.empData.update(obj => {
         if( result['type'] === 'startDate' ) {

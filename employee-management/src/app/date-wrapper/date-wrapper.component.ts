@@ -50,9 +50,7 @@ export class DateWrapperComponent {
 
   ngOnInit() {
     let data  = this.data; 
-    console.log("Received Data from parent form", data);
     if(data.dateUTC) {
-      //Convert to local
       this.selectedDate.set(new Date(data.dateUTC));
     }
   }
